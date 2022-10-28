@@ -2,7 +2,7 @@
   "name": "@vue-ethereum-hooks/core",
   "description": "Vanilla JS library for Ethereum",
   "license": "WAGMIT",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/matthewhausman/vue-ethereum-hooks.git",
