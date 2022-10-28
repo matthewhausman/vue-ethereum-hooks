@@ -1,5 +1,5 @@
 {
-  "name": "@vue-ethereum-hooks/vue",
+  "name": "vue-ethereum-hooks",
   "description": "Vue Hooks for Ethereum",
   "license": "MIT",
   "version": "0.0.2",
@@ -11,7 +11,7 @@
   "author": "awkweb.eth",
   "main": "dist/vue-ethereum-hooks.cjs.js",
   "module": "dist/vue-ethereum-hooks.esm.js",
-  "types": "dist/wagmi.cjs.d.ts",
+  "types": "dist/vue-ethereum-hooks.cjs.d.ts",
   "exports": {
     ".": {
       "module": "./dist/vue-ethereum-hooks.esm.js",
@@ -104,7 +104,7 @@
     "@tanstack/query-core": "^4.13.0",
     "@tanstack/query-sync-storage-persister": "^4.13.0",
     "@tanstack/query-persist-client-core": "^4.13.0",
-    "@vue-ethereum-hooks/core": "^0.0.1",
+    "@vue-ethereum-hooks/core": "^0.0.2",
     "@walletconnect/ethereum-provider": "^1.8.0",
     "abitype": "^0.1.7",
     "vue-demi": "^0.13.11"

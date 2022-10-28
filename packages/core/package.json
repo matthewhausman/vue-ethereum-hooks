@@ -11,6 +11,7 @@
   "author": "awkweb.eth",
   "main": "dist/vue-ethereum-hooks-core.cjs.js",
   "module": "dist/vue-ethereum-hooks-core.esm.js",
+  "types": "dist/vue-ethereum-hooks-core.cjs.d.ts",
   "exports": {
     ".": {
       "module": "./dist/vue-ethereum-hooks-core.esm.js",
@@ -58,7 +59,6 @@
     },
     "./package.json": "./package.json"
   },
-  "types": "dist/vue-ethereum-hooks-core.cjs.d.ts",
   "sideEffects": false,
   "files": [
     "/chains",
