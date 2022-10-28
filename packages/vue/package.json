@@ -1,5 +1,5 @@
 {
-  "name": "vue-ethereum-hooks",
+  "name": "@vue-ethereum-hooks/vue",
   "description": "Vue Hooks for Ethereum",
   "license": "MIT",
   "version": "0.0.2",
