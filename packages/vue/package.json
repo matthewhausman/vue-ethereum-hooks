@@ -104,7 +104,7 @@
     "@tanstack/query-core": "^4.13.0",
     "@tanstack/query-sync-storage-persister": "^4.13.0",
     "@tanstack/query-persist-client-core": "^4.13.0",
-    "@vue-ethereum-hooks/core": "^0.0.2",
+    "@vue-ethereum-hooks/core": "^0.0.3",
     "@walletconnect/ethereum-provider": "^1.8.0",
     "abitype": "^0.1.7",
     "vue-demi": "^0.13.11"
