@@ -1,0 +1,4 @@
+{
+  "main": "dist/vue-ethereum-hooks-providers-public.cjs.js",
+  "module": "dist/vue-ethereum-hooks-providers-public.esm.js"
+}

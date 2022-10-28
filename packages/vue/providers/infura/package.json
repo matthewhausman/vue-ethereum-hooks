@@ -1,0 +1,4 @@
+{
+  "main": "dist/vue-ethereum-hooks-providers-infura.cjs.js",
+  "module": "dist/vue-ethereum-hooks-providers-infura.esm.js"
+}

@@ -1,0 +1,132 @@
+{
+  "name": "vue-ethereum-hooks",
+  "description": "Vue Hooks for Ethereum",
+  "license": "MIT",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matthewhausman/vue-ethereum-hooks.git",
+    "directory": "packages/vue"
+  },
+  "author": "awkweb.eth",
+  "main": "dist/vue-ethereum-hooks.cjs.js",
+  "module": "dist/vue-ethereum-hooks.esm.js",
+  "types": "dist/wagmi.cjs.d.ts",
+  "exports": {
+    ".": {
+      "module": "./dist/vue-ethereum-hooks.esm.js",
+      "default": "./dist/vue-ethereum-hooks.cjs.js"
+    },
+    "./chains": {
+      "module": "./chains/dist/vue-ethereum-hooks-chains.esm.js",
+      "default": "./chains/dist/vue-ethereum-hooks-chains.cjs.js"
+    },
+    "./plugin": {
+      "module": "./plugin/dist/vue-ethereum-hooks-plugin.esm.js",
+      "default": "./plugin/dist/vue-ethereum-hooks-plugin.cjs.js"
+    },
+    "./actions": {
+      "module": "./actions/dist/vue-ethereum-hooks-actions.esm.js",
+      "default": "./actions/dist/vue-ethereum-hooks-actions.cjs.js"
+    },
+    "./connectors/mock": {
+      "module": "./connectors/mock/dist/vue-ethereum-hooks-connectors-mock.esm.js",
+      "default": "./connectors/mock/dist/vue-ethereum-hooks-connectors-mock.cjs.js"
+    },
+    "./providers/infura": {
+      "module": "./providers/infura/dist/vue-ethereum-hooks-providers-infura.esm.js",
+      "default": "./providers/infura/dist/vue-ethereum-hooks-providers-infura.cjs.js"
+    },
+    "./providers/public": {
+      "module": "./providers/public/dist/vue-ethereum-hooks-providers-public.esm.js",
+      "default": "./providers/public/dist/vue-ethereum-hooks-providers-public.cjs.js"
+    },
+    "./providers/alchemy": {
+      "module": "./providers/alchemy/dist/vue-ethereum-hooks-providers-alchemy.esm.js",
+      "default": "./providers/alchemy/dist/vue-ethereum-hooks-providers-alchemy.cjs.js"
+    },
+    "./providers/jsonRpc": {
+      "module": "./providers/jsonRpc/dist/vue-ethereum-hooks-providers-jsonRpc.esm.js",
+      "default": "./providers/jsonRpc/dist/vue-ethereum-hooks-providers-jsonRpc.cjs.js"
+    },
+    "./connectors/injected": {
+      "module": "./connectors/injected/dist/vue-ethereum-hooks-connectors-injected.esm.js",
+      "default": "./connectors/injected/dist/vue-ethereum-hooks-connectors-injected.cjs.js"
+    },
+    "./connectors/metaMask": {
+      "module": "./connectors/metaMask/dist/vue-ethereum-hooks-connectors-metaMask.esm.js",
+      "default": "./connectors/metaMask/dist/vue-ethereum-hooks-connectors-metaMask.cjs.js"
+    },
+    "./connectors/walletConnect": {
+      "module": "./connectors/walletConnect/dist/vue-ethereum-hooks-connectors-walletConnect.esm.js",
+      "default": "./connectors/walletConnect/dist/vue-ethereum-hooks-connectors-walletConnect.cjs.js"
+    },
+    "./connectors/coinbaseWallet": {
+      "module": "./connectors/coinbaseWallet/dist/vue-ethereum-hooks-connectors-coinbaseWallet.esm.js",
+      "default": "./connectors/coinbaseWallet/dist/vue-ethereum-hooks-connectors-coinbaseWallet.cjs.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
+  "files": [
+    "/actions",
+    "/chains",
+    "/connectors",
+    "/dist",
+    "/plugin",
+    "/providers"
+  ],
+  "preconstruct": {
+    "entrypoints": [
+      "index.ts",
+      "actions.ts",
+      "chains.ts",
+      "plugin.ts",
+      "connectors/coinbaseWallet.ts",
+      "connectors/injected.ts",
+      "connectors/metaMask.ts",
+      "connectors/mock.ts",
+      "connectors/walletConnect.ts",
+      "providers/alchemy.ts",
+      "providers/public.ts",
+      "providers/infura.ts",
+      "providers/jsonRpc.ts"
+    ]
+  },
+  "peerDependencies": {
+    "ethers": ">=5.5.1",
+    "@vue/composition-api": "^1.1.2",
+    "vue": "^2.5.0 || ^3.0.0"
+  },
+  "dependencies": {
+    "@coinbase/wallet-sdk": "^3.5.3",
+    "@tanstack/vue-query": "^4.13.2",
+    "@tanstack/query-core": "^4.13.0",
+    "@tanstack/query-sync-storage-persister": "^4.13.0",
+    "@tanstack/query-persist-client-core": "^4.13.0",
+    "@wagmi/core": "^0.6.4",
+    "@walletconnect/ethereum-provider": "^1.8.0",
+    "abitype": "^0.1.7",
+    "vue-demi": "^0.13.11"
+  },
+  "peerDependenciesMeta": {
+    "@vue/composition-api": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "ethers": "^5.7.0",
+    "@vue/composition-api": "1.7.1",
+    "vue": "^3.2.40",
+    "vue2": "npm:vue@2"
+  },
+  "keywords": [
+    "vue",
+    "hooks",
+    "eth",
+    "ethereum",
+    "dapps",
+    "wallet",
+    "web3"
+  ]
+}
