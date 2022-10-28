@@ -1,4 +1,4 @@
 {
-  "main": "dist/vue-ethereum-hooks-connectors-mock.cjs.js",
-  "module": "dist/vue-ethereum-hooks-connectors-mock.esm.js"
+  "main": "dist/vue-ethereum-hooks-hooks-connectors-mock.cjs.js",
+  "module": "dist/vue-ethereum-hooks-hooks-connectors-mock.esm.js"
 }

@@ -1,11 +1,5 @@
 {
   "name": "root",
-  "version": "0.0.1",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/matthewhausman/vue-ethereum-hooks.git",
-    "directory": "packages/vue"
-  },
   "scripts": {
     "anvil": "anvil --fork-url $ANVIL_FORK_URL --fork-block-number 15578840",
     "build": "preconstruct build",

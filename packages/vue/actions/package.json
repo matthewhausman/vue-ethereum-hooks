@@ -1,4 +1,4 @@
 {
-  "main": "dist/vue-ethereum-hooks-actions.cjs.js",
-  "module": "dist/vue-ethereum-hooks-actions.esm.js"
+  "main": "dist/vue-ethereum-hooks-hooks-actions.cjs.js",
+  "module": "dist/vue-ethereum-hooks-hooks-actions.esm.js"
 }
