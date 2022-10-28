@@ -1,5 +1,5 @@
 module.exports = {
-  presets: ['@babel/preset-typescript', '@babel/preset-flow'],
+  presets: ['@babel/preset-typescript', '@babel/preset-react'],
 
   overrides: [
     {
