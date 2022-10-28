@@ -20,7 +20,8 @@
     "test:coverage": "vitest run --coverage",
     "test:run": "vitest run",
     "test:ui": "vitest --ui",
-    "test:update": "vitest --update"
+    "test:update": "vitest --update",
+    "test:jest": "pnpm --filter \"./packages/**\" --parallel --no-bail run test:jest"
   },
   "preconstruct": {
     "___experimentalFlags_WILL_CHANGE_IN_PATCH": {
@@ -48,10 +49,13 @@
     "@typescript-eslint/parser": "^5.37.0",
     "@vitest/ui": "^0.18.1",
     "c8": "^7.12.0",
+    "@types/testing-library__jest-dom": "^5.14.5",
     "eslint": "8.17.0",
+    "ts-node": "^10.7.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-typescript": "^2.7.1",
     "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-flowtype": "5.x",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-mdx": "^2.0.4",
     "eslint-plugin-prettier": "^4.2.1",
