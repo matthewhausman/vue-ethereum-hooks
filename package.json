@@ -1,5 +1,6 @@
 {
   "name": "root",
+  "version": "0.0.1",
   "scripts": {
     "anvil": "anvil --fork-url $ANVIL_FORK_URL --fork-block-number 15578840",
     "build": "preconstruct build",
