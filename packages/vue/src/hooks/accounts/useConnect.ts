@@ -1,5 +1,10 @@
 import { UseMutationOptions, useMutation } from '@tanstack/vue-query'
-import { ConnectArgs, ConnectResult, Connector, connect } from '@wagmi/core'
+import {
+  ConnectArgs,
+  ConnectResult,
+  Connector,
+  connect,
+} from '@vue-ethereum-hooks/core'
 
 import { computed, unref } from 'vue-demi'
 

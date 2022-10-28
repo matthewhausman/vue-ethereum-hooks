@@ -49,7 +49,7 @@ export type SendTransactionResult = {
  * [UX pitfalls](https://wagmi.sh/docs/prepare-hooks/intro#ux-pitfalls-without-prepare-hooks).
  *
  * @example
- * import { prepareSendTransaction, sendTransaction } from '@wagmi/core'
+ * import { prepareSendTransaction, sendTransaction } from '@vue-ethereum-hooks/core'
  *
  * const config = await prepareSendTransaction({
  *  to: 'moxey.eth',

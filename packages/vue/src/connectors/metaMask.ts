@@ -1,1 +1,1 @@
-export { MetaMaskConnector } from '@wagmi/core/connectors/metaMask'
+export { MetaMaskConnector } from '@vue-ethereum-hooks/core/connectors/metaMask'

@@ -1,1 +1,1 @@
-export { WalletConnectConnector } from '@wagmi/core/connectors/walletConnect'
+export { WalletConnectConnector } from '@vue-ethereum-hooks/core/connectors/walletConnect'

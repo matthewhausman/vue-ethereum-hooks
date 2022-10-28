@@ -16,4 +16,4 @@ export {
   polygonMumbai,
   rinkeby,
   ropsten,
-} from '@wagmi/core/chains'
+} from '@vue-ethereum-hooks/core/chains'

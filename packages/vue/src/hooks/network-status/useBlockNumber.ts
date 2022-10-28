@@ -3,8 +3,8 @@ import {
   FetchBlockNumberArgs,
   FetchBlockNumberResult,
   fetchBlockNumber,
-} from '@wagmi/core'
-import { debounce } from '@wagmi/core/internal'
+} from '@vue-ethereum-hooks/core'
+import { debounce } from '@vue-ethereum-hooks/core/internal'
 import { computed, unref, watchEffect } from 'vue-demi'
 
 import { MaybeRef, QueryConfig, QueryFunctionArgs } from '../../types'

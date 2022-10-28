@@ -4,7 +4,7 @@ import {
   WebSocketProvider,
   getWebSocketProvider,
   watchWebSocketProvider,
-} from '@wagmi/core'
+} from '@vue-ethereum-hooks/core'
 import { onScopeDispose, ref } from 'vue-demi'
 // import { useSyncExternalStoreWithSelector } from 'use-sync-external-store/shim/with-selector.js'
 

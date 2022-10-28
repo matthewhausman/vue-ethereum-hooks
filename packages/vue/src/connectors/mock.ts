@@ -1,1 +1,1 @@
-export { MockConnector } from '@wagmi/core/connectors/mock'
+export { MockConnector } from '@vue-ethereum-hooks/core/connectors/mock'

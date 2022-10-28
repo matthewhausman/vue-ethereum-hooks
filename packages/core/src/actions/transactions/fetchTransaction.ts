@@ -16,7 +16,7 @@ export type FetchTransactionResult = providers.TransactionResponse
  * @description Fetches transaction for hash
  *
  * @example
- * import { fetchTransaction } from '@wagmi/core'
+ * import { fetchTransaction } from '@vue-ethereum-hooks/core'
  *
  * const transaction = await fetchTransaction({
  *  chainId: 1,

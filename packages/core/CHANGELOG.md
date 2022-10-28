@@ -1,4 +1,4 @@
-# @wagmi/core
+# @vue-ethereum-hooks/core
 
 ## 0.6.4
 
@@ -31,7 +31,7 @@
 - [#940](https://github.com/wagmi-dev/wagmi/pull/940) [`b6cb8f4`](https://github.com/wagmi-dev/wagmi/commit/b6cb8f4cd15eb13073bc7e9ecb4bfa2c261c0663) Thanks [@jxom](https://github.com/jxom)! - **Breaking**: `watchSigner` now requires an arguments object (that accepts an optional `chainId`) as it's first parameter.
 
   ```diff
-  import { watchSigner } from `@wagmi/core`
+  import { watchSigner } from `@vue-ethereum-hooks/core`
 
   -watchSigner(signer => {
   +watchSigner({}, signer => {
@@ -44,7 +44,7 @@
 - [#941](https://github.com/wagmi-dev/wagmi/pull/941) [`0c96009`](https://github.com/wagmi-dev/wagmi/commit/0c96009398647a515a57f72ef25c32724f7c978c) Thanks [@tmm](https://github.com/tmm)! - **Breaking**: `addressOrName` and `contractInterface` renamed to `address` and `abi` respectively for contract actions: `getContract`, `multicall`, `prepareWriteContract`, `readContract`, `readContracts`, `watchContractEvent`, `watchMulticall`, `watchReadContract`, `watchReadContracts`, `writeContract`.
 
   ```diff
-  import { readContract } from '@wagmi/core'
+  import { readContract } from '@vue-ethereum-hooks/core'
 
   const result = await readContract({
   - addressOrName: '0x…',
@@ -59,8 +59,8 @@
   If you were using an ENS name instead of an address, you can resolve the name to an address before passing it to the action.
 
   ```diff
-  - import { readContract } from '@wagmi/core'
-  + import { fetchEnsAddress, readContract } from '@wagmi/core'
+  - import { readContract } from '@vue-ethereum-hooks/core'
+  + import { fetchEnsAddress, readContract } from '@vue-ethereum-hooks/core'
 
   + const address = await fetchEnsAddress('example.eth')
   const result = await readContract({
@@ -83,7 +83,7 @@
 - [#941](https://github.com/wagmi-dev/wagmi/pull/941) [`0c96009`](https://github.com/wagmi-dev/wagmi/commit/0c96009398647a515a57f72ef25c32724f7c978c) Thanks [@tmm](https://github.com/tmm)! - **Breaking**: `args` config option must now be an array for the following actions: `readContract`, `writeContract`, `prepareWriteContract`, `multicall`, `readContracts`, `watchMulticall`, and `watchReadContracts`.
 
   ```diff
-  import { readContract } from '@wagmi/core'
+  import { readContract } from '@vue-ethereum-hooks/core'
 
   const result = await readContract({
     address: '0x…',
@@ -97,7 +97,7 @@
 - [#941](https://github.com/wagmi-dev/wagmi/pull/941) [`0c96009`](https://github.com/wagmi-dev/wagmi/commit/0c96009398647a515a57f72ef25c32724f7c978c) Thanks [@tmm](https://github.com/tmm)! - **Breaking**: `watchContractEvent` now accepts a configuration object and callback instead of positional arguments.
 
   ```diff
-  import { watchContractEvent } from '@wagmi/core'
+  import { watchContractEvent } from '@vue-ethereum-hooks/core'
 
   - const unsubscribe = watchContractEvent(
   -   {
@@ -125,7 +125,7 @@
 
 - [#941](https://github.com/wagmi-dev/wagmi/pull/941) [`0c96009`](https://github.com/wagmi-dev/wagmi/commit/0c96009398647a515a57f72ef25c32724f7c978c) Thanks [@tmm](https://github.com/tmm)! - **Breaking**: Updated TypeScript version to `typescript@>=4.7.4`.
 
-  `@wagmi/core` can now infer types based on [ABI](https://docs.soliditylang.org/en/v0.8.15/abi-spec.html#json) and [EIP-712](https://eips.ethereum.org/EIPS/eip-712) Typed Data definitions, giving you full end-to-end type-safety from your contracts to your frontend and incredible developer experience (e.g. autocomplete contract function names and catch misspellings, type contract function arguments, etc.).
+  `@vue-ethereum-hooks/core` can now infer types based on [ABI](https://docs.soliditylang.org/en/v0.8.15/abi-spec.html#json) and [EIP-712](https://eips.ethereum.org/EIPS/eip-712) Typed Data definitions, giving you full end-to-end type-safety from your contracts to your frontend and incredible developer experience (e.g. autocomplete contract function names and catch misspellings, type contract function arguments, etc.).
 
   For this to work, you must upgrade to `typescript@>=4.7.4`. Why is TypeScript v4.7.4 or greater necessary? TypeScript 4.7.4 introduced the ability to [extend constraints on inferred type variables](https://devblogs.microsoft.com/typescript/announcing-typescript-4-7/#extends-constraints-on-infer-type-variables), which is used extensively to help narrow types for ABIs. Good news! When upgrading TypeScript from 4.6 to 4.7 there are likely no [breaking changes](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-7.html#breaking-changes) for your set up.
 
@@ -134,7 +134,7 @@
   Adding a [const assertion](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-4.html#const-assertions) to `abi` allows TypeScript to infer `functionName`, `args`, `overrides`, and return types for functions, and `eventName` and `listener` types for events.
 
   ```diff
-  import { readContract } from '@wagmi/core'
+  import { readContract } from '@vue-ethereum-hooks/core'
 
   const result = await readContract({
     address: '0x…',
@@ -151,7 +151,7 @@
   Adding a [const assertion](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-4.html#const-assertions) to `signTypedData`'s config option, `types`, allows TypeScript to infer `value`.
 
   ```diff
-  import { signTypedData } from '@wagmi/core'
+  import { signTypedData } from '@vue-ethereum-hooks/core'
 
   const result = await signTypedData({
     domain: {
@@ -193,8 +193,8 @@
 - [#940](https://github.com/wagmi-dev/wagmi/pull/940) [`b6cb8f4`](https://github.com/wagmi-dev/wagmi/commit/b6cb8f4cd15eb13073bc7e9ecb4bfa2c261c0663) Thanks [@jxom](https://github.com/jxom)! - The `fetchSigner` action now accepts an optional `chainId` to use for signer initialization as an argument.
 
   ```tsx
-  import { fetchSigner } from '@wagmi/core'
-  import { optimism } from '@wagmi/core/chains'
+  import { fetchSigner } from '@vue-ethereum-hooks/core'
+  import { optimism } from '@vue-ethereum-hooks/core/chains'
 
   // ...
 
@@ -339,7 +339,7 @@
   ### Prepared usage
 
   ```diff
-  import { prepareSendTransaction, sendTransaction } from '@wagmi/core'
+  import { prepareSendTransaction, sendTransaction } from '@vue-ethereum-hooks/core'
 
   +const config = await prepareSendTransaction({
   +  request: {
@@ -362,7 +362,7 @@
   It is possible to use `sendTransaction` without preparing the configuration first by passing `mode: 'recklesslyUnprepared'`.
 
   ```diff
-  import { sendTransaction } from '@wagmi/core'
+  import { sendTransaction } from '@vue-ethereum-hooks/core'
 
   const result = await sendTransaction({
   + mode: 'recklesslyUnprepared',
@@ -376,8 +376,8 @@
 * [#760](https://github.com/wagmi-dev/wagmi/pull/760) [`d8af6bf`](https://github.com/wagmi-dev/wagmi/commit/d8af6bf50885aec110ae4d64716642453aa27896) Thanks [@tmm](https://github.com/tmm)! - **Breaking:** `alchemyProvider` and `infuraProvider` now use a generic `apiKey` configuration option instead of `alchemyId` and `infuraId`.
 
   ```diff
-  import { alchemyProvider } from '@wagmi/core/providers/alchemy'
-  import { infuraProvider } from '@wagmi/core/providers/infura'
+  import { alchemyProvider } from '@vue-ethereum-hooks/core/providers/alchemy'
+  import { infuraProvider } from '@vue-ethereum-hooks/core/providers/infura'
 
   alchemyProvider({
   -  alchemyId: 'yourAlchemyApiKey',
@@ -410,7 +410,7 @@
   If you require the full `TransactionResponse`, you can use `fetchTransaction`:
 
   ```diff
-  import { sendTransaction, fetchTransaction } from '@wagmi/core'
+  import { sendTransaction, fetchTransaction } from '@vue-ethereum-hooks/core'
 
   const {
     hash,
@@ -442,7 +442,7 @@
   ### Prepared usage
 
   ```diff
-  import { prepareWriteContract, writeContract } from '@wagmi/core'
+  import { prepareWriteContract, writeContract } from '@vue-ethereum-hooks/core'
 
   const tokenId = 69
 
@@ -467,7 +467,7 @@
   It is possible to use `writeContract` without preparing the configuration first by passing `mode: 'recklesslyUnprepared'`.
 
   ```diff
-  import { writeContract } from '@wagmi/core'
+  import { writeContract } from '@vue-ethereum-hooks/core'
 
   const tokenId = 69
 
@@ -485,7 +485,7 @@
   It returns config to be passed through to `sendTransaction`.
 
   ```ts
-  import { prepareSendTransaction, sendTransaction } from '@wagmi/core'
+  import { prepareSendTransaction, sendTransaction } from '@vue-ethereum-hooks/core'
 
   const config = await prepareSendTransaction({
     request: {
@@ -503,7 +503,7 @@
   Example:
 
   ```tsx
-  import { prepareWriteContract, writeContract } from '@wagmi/core'
+  import { prepareWriteContract, writeContract } from '@vue-ethereum-hooks/core'
 
   const config = await prepareWriteContract({
     addressOrName: '0x...',
@@ -518,7 +518,7 @@
 - [#759](https://github.com/wagmi-dev/wagmi/pull/759) [`959953d`](https://github.com/wagmi-dev/wagmi/commit/959953d1f5b3e8189bac56de245c62333470d18e) Thanks [@tmm](https://github.com/tmm)! - Added `fetchTransaction` action:
 
   ```ts
-  import { fetchTransaction } from '@wagmi/core'
+  import { fetchTransaction } from '@vue-ethereum-hooks/core'
 
   const transaction = await fetchTransaction({
     hash: '0x5c504ed432cb51138bcf09aa5e8a410dd4a1e204ef84bfed1be16dfba1b22060',
@@ -543,7 +543,7 @@
 
 ### Patch Changes
 
-- [#677](https://github.com/tmm/wagmi/pull/677) [`35e4219`](https://github.com/tmm/wagmi/commit/35e42199af9dd346549c1718e144728f55b8d7dd) Thanks [@jxom](https://github.com/jxom)! - Move `parseContractResult` to `@wagmi/core`
+- [#677](https://github.com/tmm/wagmi/pull/677) [`35e4219`](https://github.com/tmm/wagmi/commit/35e42199af9dd346549c1718e144728f55b8d7dd) Thanks [@jxom](https://github.com/jxom)! - Move `parseContractResult` to `@vue-ethereum-hooks/core`
 
 ## 0.4.6
 
@@ -811,7 +811,7 @@
   Example:
 
   ```tsx
-  import { connect } from '@wagmi/core'
+  import { connect } from '@vue-ethereum-hooks/core'
 
   await connect({ chainId: 69 })
   ```
@@ -1128,7 +1128,7 @@
 
 - [#311](https://github.com/tmm/wagmi/pull/311) [`24ce011`](https://github.com/tmm/wagmi/commit/24ce0113022b890e9582c6cc24035926e0d2b32d) Thanks [@tmm](https://github.com/tmm)! - don't persist account data when `autoConnect` is falsy
 
-* [#311](https://github.com/tmm/wagmi/pull/311) [`24ce011`](https://github.com/tmm/wagmi/commit/24ce0113022b890e9582c6cc24035926e0d2b32d) Thanks [@tmm](https://github.com/tmm)! - - fix(@wagmi/core): persist connector chains to local storage
+* [#311](https://github.com/tmm/wagmi/pull/311) [`24ce011`](https://github.com/tmm/wagmi/commit/24ce0113022b890e9582c6cc24035926e0d2b32d) Thanks [@tmm](https://github.com/tmm)! - - fix(@vue-ethereum-hooks/core): persist connector chains to local storage
 
 - [#311](https://github.com/tmm/wagmi/pull/311) [`24ce011`](https://github.com/tmm/wagmi/commit/24ce0113022b890e9582c6cc24035926e0d2b32d) Thanks [@tmm](https://github.com/tmm)! - - Favour `message` event over `connecting` event to conform to EIP-1193
   - Export `useWaitForTransaction`

@@ -1,5 +1,9 @@
 import { useQuery } from '@tanstack/vue-query'
-import { FetchBalanceArgs, FetchBalanceResult, fetchBalance } from '@wagmi/core'
+import {
+  FetchBalanceArgs,
+  FetchBalanceResult,
+  fetchBalance,
+} from '@vue-ethereum-hooks/core'
 import { watchEffect } from 'vue-demi'
 
 import { QueryConfig, QueryFunctionArgs } from '../../types'

@@ -100,7 +100,7 @@ export type WriteContractResult = SendTransactionResult
  * to avoid [UX pitfalls](https://wagmi.sh/docs/prepare-hooks/intro#ux-pitfalls-without-prepare-hooks).
  *
  * @example
- * import { prepareWriteContract, writeContract } from '@wagmi/core'
+ * import { prepareWriteContract, writeContract } from '@vue-ethereum-hooks/core'
  *
  * const config = await prepareWriteContract({
  *   address: '0x...',

@@ -70,7 +70,7 @@ export type PrepareWriteContractResult<
  * Returns config to be passed through to `writeContract`.
  *
  * @example
- * import { prepareWriteContract, writeContract } from '@wagmi/core'
+ * import { prepareWriteContract, writeContract } from '@vue-ethereum-hooks/core'
  *
  * const config = await prepareWriteContract({
  *  address: '0x...',

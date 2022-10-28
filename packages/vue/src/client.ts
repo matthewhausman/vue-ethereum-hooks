@@ -14,7 +14,7 @@ import {
   Provider,
   WebSocketProvider,
   createClient as createCoreClient,
-} from '@wagmi/core'
+} from '@vue-ethereum-hooks/core'
 import { App, ComputedRef, computed, ref } from 'vue-demi'
 
 import { deserialize, serialize } from './utils'

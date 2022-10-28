@@ -75,7 +75,7 @@ export {
   infuraRpcUrls,
   publicRpcUrls,
   readContracts,
-} from '@wagmi/core'
+} from '@vue-ethereum-hooks/core'
 
 export type {
   Chain,
@@ -84,7 +84,7 @@ export type {
   ConnectorEvents,
   Storage,
   Unit,
-} from '@wagmi/core'
+} from '@vue-ethereum-hooks/core'
 
 export type { Address } from 'abitype'
 

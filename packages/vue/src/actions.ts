@@ -37,7 +37,7 @@ export {
   watchSigner,
   watchWebSocketProvider,
   writeContract,
-} from '@wagmi/core'
+} from '@vue-ethereum-hooks/core'
 
 export type {
   ConnectArgs,
@@ -104,4 +104,4 @@ export type {
   WriteContractPreparedArgs,
   WriteContractResult,
   WriteContractUnpreparedArgs,
-} from '@wagmi/core'
+} from '@vue-ethereum-hooks/core'

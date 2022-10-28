@@ -33,7 +33,7 @@ export type PrepareSendTransactionResult = {
  * Returns config to be passed through to `sendTransaction`.
  *
  * @example
- * import { prepareSendTransaction, sendTransaction } from '@wagmi/core'
+ * import { prepareSendTransaction, sendTransaction } from '@vue-ethereum-hooks/core'
  *
  * const config = await prepareSendTransaction({
  *  request: {

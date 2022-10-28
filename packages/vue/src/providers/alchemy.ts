@@ -1,1 +1,1 @@
-export { alchemyProvider } from '@wagmi/core/providers/alchemy'
+export { alchemyProvider } from '@vue-ethereum-hooks/core/providers/alchemy'

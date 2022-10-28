@@ -1,4 +1,4 @@
-# @wagmi/core
+# @vue-ethereum-hooks/core
 
 ## Documentation
 
@@ -9,7 +9,7 @@ For full documentation and examples, visit [wagmi.sh](https://wagmi.sh).
 Install wagmi and its ethers peer dependency.
 
 ```bash
-npm install @wagmi/core ethers
+npm install @vue-ethereum-hooks/core ethers
 ```
 
 ## Community
@@ -17,7 +17,7 @@ npm install @wagmi/core ethers
 Check out the following places for more wagmi-related content:
 
 - Join the [discussions on GitHub](https://github.com/wagmi-dev/wagmi/discussions)
-- Follow [@wagmi_sh](https://twitter.com/wagmi_sh) on Twitter for project updates
+- Follow [@vue-ethereum-hooks_sh](https://twitter.com/wagmi_sh) on Twitter for project updates
 - Share [your project/organization](https://github.com/wagmi-dev/wagmi/discussions/201) using wagmi
 - Browse the [awesome-wagmi](https://github.com/wagmi-dev/awesome-wagmi) list of awesome projects and resources
 

@@ -1,1 +1,1 @@
-export { infuraProvider } from '@wagmi/core/providers/infura'
+export { infuraProvider } from '@vue-ethereum-hooks/core/providers/infura'

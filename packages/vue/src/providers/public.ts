@@ -1,1 +1,1 @@
-export { publicProvider } from '@wagmi/core/providers/public'
+export { publicProvider } from '@vue-ethereum-hooks/core/providers/public'

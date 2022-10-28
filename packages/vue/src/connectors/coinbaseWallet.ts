@@ -1,1 +1,1 @@
-export { CoinbaseWalletConnector } from '@wagmi/core/connectors/coinbaseWallet'
+export { CoinbaseWalletConnector } from '@vue-ethereum-hooks/core/connectors/coinbaseWallet'
