@@ -6,7 +6,7 @@ import {
   connect,
 } from '@vue-ethereum-hooks/core'
 
-import { computed, unref } from 'vue-demi'
+import { computed, isRef, unref } from 'vue-demi'
 
 import { useClient } from '../../client'
 import { MaybeRef } from '../../types'
@@ -70,16 +70,20 @@ export function useConnect({
   })
 
   const connect = computed(() => (args?: Partial<ConnectArgs>) => {
+    const plainConnector = isRef(connector) ? connector.value : connector
+    if (!plainConnector) return
     return mutate({
       chainId: args?.chainId ?? unref<number | undefined>(chainId),
-      connector: args?.connector ?? unref<Connector | undefined>(connector),
+      connector: args?.connector ?? plainConnector,
     })
   })
 
   const connectAsync = computed(() => (args?: Partial<ConnectArgs>) => {
+    const plainConnector = isRef(connector) ? connector.value : connector
+    if (!plainConnector) return
     return mutateAsync({
       chainId: args?.chainId ?? unref<number | undefined>(chainId),
-      connector: args?.connector ?? unref<Connector | undefined>(connector),
+      connector: args?.connector ?? plainConnector,
     })
   })
 
