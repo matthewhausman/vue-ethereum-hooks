@@ -28,10 +28,7 @@ export type UseAccountConfig = {
   [Property in keyof AccountConfig]: MaybeRef<AccountConfig[Property]>
 }
 
-export const useAccount = ({
-  onConnect,
-  onDisconnect,
-}: UseAccountConfig = {}) => {
+export function useAccount({ onConnect, onDisconnect }: UseAccountConfig = {}) {
   const previousAccount: Partial<GetAccountResult> & {
     current: GetAccountResult
   } = { current: getAccount() }

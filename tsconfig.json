@@ -4,6 +4,7 @@
     "downlevelIteration": true,
     "esModuleInterop": true,
     "incremental": true,
+    "declaration": false,
     "isolatedModules": true,
     "lib": ["es2019", "es2017", "dom"],
     "module": "commonjs",
@@ -20,6 +21,8 @@
     "target": "es2021",
     "types": [
       "node",
+      "@ethersproject/abstract-provider",
+      "@ethersproject/abstract-signer",
       // TODO: Remove once issue is fixed
       // https://github.com/microsoft/TypeScript/issues/42873
       "@ethersproject/providers"
