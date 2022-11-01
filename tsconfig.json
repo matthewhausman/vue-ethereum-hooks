@@ -24,7 +24,7 @@
       // https://github.com/microsoft/TypeScript/issues/42873
       "@ethersproject/providers"
     ],
-    "preserveSymlinks": true
+    "preserveSymlinks": false
   },
   "exclude": ["node_modules", "**/dist/**"],
   "include": ["packages/**/*"]

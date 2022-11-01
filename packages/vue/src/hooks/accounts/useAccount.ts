@@ -4,6 +4,7 @@ import {
   getAccount,
   watchAccount,
 } from '@vue-ethereum-hooks/core'
+
 import { onScopeDispose, ref, unref, watch } from 'vue-demi'
 
 import { MaybeRef } from '../../types'

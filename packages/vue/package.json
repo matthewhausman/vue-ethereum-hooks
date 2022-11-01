@@ -93,10 +93,11 @@
       "providers/jsonRpc.ts"
     ]
   },
-  "peerDependencies": {
-    "ethers": ">=5.5.1",
-    "@vue/composition-api": "^1.1.2",
-    "vue": "^2.5.0 || ^3.0.0"
+  "devDependencies": {
+    "ethers": "^5.7.0",
+    "@vue/composition-api": "1.7.1",
+    "vue": "^3.2.40",
+    "vue2": "npm:vue@2"
   },
   "dependencies": {
     "@coinbase/wallet-sdk": "^3.5.3",
@@ -107,25 +108,18 @@
     "@vue-ethereum-hooks/core": "^0.0.3",
     "@walletconnect/ethereum-provider": "^1.8.0",
     "abitype": "^0.1.7",
-    "vue-demi": "^0.13.11"
+    "vue-demi": "^0.13.11",
+    "@vue/devtools-api": "^6.4.2"
+  },
+  "peerDependencies": {
+    "ethers": ">=5.5.1",
+    "@vue/composition-api": "^1.1.2",
+    "vue": "^2.5.0 || ^3.0.0"
   },
   "peerDependenciesMeta": {
     "@vue/composition-api": {
       "optional": true
     }
-  },
-  "devDependencies": {
-    "babel-jest": "^27.5.1",
-    "jest": "^27.5.1",
-    "ts-jest": "^27.1.1",
-    "@types/jest": "^26.0.4",
-    "@faker-js/faker": "^6.3.1",
-    "babel-plugin-transform-async-to-promises": "^0.8.18",
-    "@testing-library/jest-dom": "^5.16.4",
-    "ethers": "^5.7.0",
-    "@vue/composition-api": "1.7.1",
-    "vue": "^3.2.40",
-    "vue2": "npm:vue@2"
   },
   "keywords": [
     "vue",
