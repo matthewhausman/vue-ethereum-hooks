@@ -4,12 +4,14 @@ import {
   getProvider,
   watchProvider,
 } from '@vue-ethereum-hooks/core'
-import { MaybeRef, tryOnScopeDispose } from '@vueuse/core'
+import { MaybeRef } from '@vueuse/core'
 import { ref, unref, watchEffect } from 'vue-demi'
 
-export type UseProviderArgs = Partial<{
+export type ReactiveGetProviderArgs = {
   [Property in keyof GetProviderArgs]: MaybeRef<GetProviderArgs[Property]>
-}>
+}
+
+export type UseProviderArgs = Partial<ReactiveGetProviderArgs>
 
 export function useProvider<TProvider extends Provider>({
   chainId,
@@ -17,9 +19,9 @@ export function useProvider<TProvider extends Provider>({
   const provider = ref<TProvider>(
     getProvider({ chainId: unref<number | undefined>(chainId) }),
   )
-  let unsubscribe: () => void | undefined
+
   watchEffect((cleanupFn) => {
-    unsubscribe = watchProvider(
+    const unsubscribe = watchProvider(
       { chainId: unref<number | undefined>(chainId) },
       (p: Provider) => {
         provider.value = p
@@ -30,8 +32,6 @@ export function useProvider<TProvider extends Provider>({
       unsubscribe()
     })
   })
-  tryOnScopeDispose(() => {
-    unsubscribe && unsubscribe()
-  })
+
   return provider
 }

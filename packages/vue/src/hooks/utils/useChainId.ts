@@ -4,7 +4,7 @@ import { computed } from 'vue-demi'
 import { useProvider } from '../providers'
 
 export type UseChainIdArgs = {
-  chainId?: MaybeRef<number>
+  chainId?: MaybeRef<number | undefined>
 }
 
 export function useChainId({ chainId }: UseChainIdArgs = {}) {

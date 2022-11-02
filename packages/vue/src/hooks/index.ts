@@ -23,7 +23,7 @@ export {
 
 // export { useEnsAddress, useEnsAvatar, useEnsName, useEnsResolver } from './ens'
 
-// export { useBlockNumber, useFeeData } from './network-status'
+export { useBlockNumber, useFeeData } from './network-status'
 
 export { useProvider, useWebSocketProvider } from './providers'
 

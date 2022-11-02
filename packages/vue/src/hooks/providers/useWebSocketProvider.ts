@@ -8,11 +8,13 @@ import {
 import { MaybeRef, tryOnScopeDispose } from '@vueuse/core'
 import { ref, unref, watchEffect } from 'vue-demi'
 
-export type UseWebSocketProviderArgs = Partial<{
+export type ReactiveGetWebSocketProviderArgs = {
   [Property in keyof GetWebSocketProviderArgs]: MaybeRef<
     GetWebSocketProviderArgs[Property]
   >
-}>
+}
+
+export type UseWebSocketProviderArgs = Partial<ReactiveGetWebSocketProviderArgs>
 
 export function useWebSocketProvider<
   TWebSocketProvider extends WebSocketProvider,
