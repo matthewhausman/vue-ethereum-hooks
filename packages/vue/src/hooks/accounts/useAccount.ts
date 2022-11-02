@@ -35,28 +35,34 @@ export function useAccount({ onConnect, onDisconnect }: UseAccountConfig = {}) {
   const unsubscribeAccount = watchAccount((acc: GetAccountResult) => {
     account.value = acc
   })
-  watch(account, () => {
-    const plainConnect = unref(onConnect)
-    const plainDisconnect = unref(onDisconnect)
-    if (
-      !!plainConnect &&
-      previousAccount.current?.status !== 'connected' &&
-      account.value.status === 'connected'
-    )
-      plainConnect({
-        address: account.value.address,
-        connector: account.value.connector as Connector,
-        isReconnected: previousAccount.current?.status === 'reconnecting',
-      })
+  watch(
+    account,
+    () => {
+      const plainConnect = unref(onConnect)
+      const plainDisconnect = unref(onDisconnect)
+      if (
+        !!plainConnect &&
+        previousAccount.current?.status !== 'connected' &&
+        account.value.status === 'connected'
+      )
+        plainConnect({
+          address: account.value.address,
+          connector: account.value.connector as Connector,
+          isReconnected: previousAccount.current?.status === 'reconnecting',
+        })
 
-    if (
-      !!plainDisconnect &&
-      previousAccount.current?.status == 'connected' &&
-      account.value.status === 'disconnected'
-    )
-      plainDisconnect()
-    previousAccount.current = account.value as GetAccountResult
-  })
+      if (
+        !!plainDisconnect &&
+        previousAccount.current?.status == 'connected' &&
+        account.value.status === 'disconnected'
+      )
+        plainDisconnect()
+      previousAccount.current = account.value as GetAccountResult
+    },
+    {
+      deep: true,
+    },
+  )
   tryOnScopeDispose(() => {
     unsubscribeAccount()
   })
