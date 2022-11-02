@@ -6,7 +6,7 @@ import {
   connect,
 } from '@vue-ethereum-hooks/core'
 import { MaybeRef } from '@vueuse/core'
-import { computed, isRef, unref } from 'vue-demi'
+import { computed, unref } from 'vue-demi'
 
 import { useClient } from '../../client'
 
@@ -26,7 +26,6 @@ export const mutationKey = (args: Partial<ConnectArgs>) =>
 
 const mutationFn = (args: ConnectArgs) => {
   const { connector, chainId } = args
-  console.log(args)
   if (!connector) throw new Error('connector is required')
   return connect({
     connector: connector,
@@ -70,22 +69,17 @@ export function useConnect({
   })
 
   const connect = (args?: Partial<ConnectArgs>) => {
-    const plainConnector = isRef(connector) ? connector.value : connector
-    console.log(args)
-    if (!plainConnector) return
     return mutate({
       chainId: args?.chainId ?? unref<number | undefined>(chainId),
-      connector: args?.connector ?? plainConnector,
-    })
+      connector: args?.connector ?? unref(connector),
+    } as ConnectArgs)
   }
 
   const connectAsync = (args?: Partial<ConnectArgs>) => {
-    const plainConnector = isRef(connector) ? connector.value : connector
-    if (!plainConnector) return
     return mutateAsync({
       chainId: args?.chainId ?? unref<number | undefined>(chainId),
-      connector: args?.connector ?? plainConnector,
-    })
+      connector: args?.connector ?? unref(connector),
+    } as ConnectArgs)
   }
 
   return {
