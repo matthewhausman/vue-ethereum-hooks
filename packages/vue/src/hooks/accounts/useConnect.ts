@@ -69,6 +69,7 @@ export function useConnect({
   })
 
   const connect = (args?: Partial<ConnectArgs>) => {
+    console.log(connector)
     return mutate({
       chainId: args?.chainId ?? unref<number | undefined>(chainId),
       connector: args?.connector ?? unref(connector),

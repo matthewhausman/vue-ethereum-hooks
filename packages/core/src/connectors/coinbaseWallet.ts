@@ -40,8 +40,8 @@ export class CoinbaseWalletConnector extends Connector<
   readonly name = 'Coinbase Wallet'
   readonly ready = true
 
-  #client?: CoinbaseWalletSDK
-  #provider?: CoinbaseWalletProvider
+  private client_?: CoinbaseWalletSDK
+  private provider_?: CoinbaseWalletProvider
 
   constructor({ chains, options }: { chains?: Chain[]; options: Options }) {
     super({
@@ -92,7 +92,7 @@ export class CoinbaseWalletConnector extends Connector<
   }
 
   async disconnect() {
-    if (!this.#provider) return
+    if (!this.provider_) return
 
     const provider = await this.getProvider()
     provider.removeListener('accountsChanged', this.onAccountsChanged)
@@ -118,7 +118,7 @@ export class CoinbaseWalletConnector extends Connector<
   }
 
   async getProvider() {
-    if (!this.#provider) {
+    if (!this.provider_) {
       let CoinbaseWalletSDK = (await import('@coinbase/wallet-sdk')).default
       // Workaround for Vite dev import errors
       // https://github.com/vitejs/vite/issues/7112
@@ -130,7 +130,7 @@ export class CoinbaseWalletConnector extends Connector<
         CoinbaseWalletSDK = (
           CoinbaseWalletSDK as unknown as { default: typeof CoinbaseWalletSDK }
         ).default
-      this.#client = new CoinbaseWalletSDK(this.options)
+      this.client_ = new CoinbaseWalletSDK(this.options)
 
       /**
        * Mock implementations to retrieve private `walletExtension` method
@@ -145,7 +145,7 @@ export class CoinbaseWalletConnector extends Connector<
         abstract get walletExtension(): WalletProvider | undefined
       }
       const walletExtensionChainId = (
-        this.#client as unknown as Client
+        this.client_ as unknown as Client
       ).walletExtension?.getChainId()
 
       const chain =
@@ -157,9 +157,9 @@ export class CoinbaseWalletConnector extends Connector<
       const chainId = this.options.chainId || chain?.id
       const jsonRpcUrl = this.options.jsonRpcUrl || chain?.rpcUrls.default
 
-      this.#provider = this.#client.makeWeb3Provider(jsonRpcUrl, chainId)
+      this.provider_ = this.client_.makeWeb3Provider(jsonRpcUrl, chainId)
     }
-    return this.#provider
+    return this.provider_
   }
 
   async getSigner({ chainId }: { chainId?: number } = {}) {
@@ -220,13 +220,13 @@ export class CoinbaseWalletConnector extends Connector<
           })
           return chain
         } catch (addError) {
-          if (this.#isUserRejectedRequestError(addError))
+          if (this.isUserRejectedRequestError(addError))
             throw new UserRejectedRequestError(addError)
           throw new AddChainError()
         }
       }
 
-      if (this.#isUserRejectedRequestError(error))
+      if (this.isUserRejectedRequestError(error))
         throw new UserRejectedRequestError(error)
       throw new SwitchChainError(error)
     }
@@ -273,7 +273,7 @@ export class CoinbaseWalletConnector extends Connector<
     this.emit('disconnect')
   }
 
-  #isUserRejectedRequestError(error: unknown) {
+  private isUserRejectedRequestError(error: unknown) {
     return /(user rejected)/i.test((error as Error).message)
   }
 }

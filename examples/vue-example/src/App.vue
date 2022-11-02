@@ -2,14 +2,25 @@
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 import { useConnect } from '@vue-ethereum-hooks/hooks'
-import { useClient } from '@vue-ethereum-hooks/hooks'
-import { unref } from 'vue';
-const { connect, connectors } = useConnect()
+import { useClient, Connector } from '@vue-ethereum-hooks/hooks'
+import { ref } from 'vue';
+import type { Ref } from 'vue'
 
-connect({
+const connectors_ = useClient().value.connectors
+const c = connectors_[1]
+const cRef = ref(c)
+
+const { connect, connectors } = useConnect({
   chainId: 1,
-  connector: connectors.value[0]
-})
+  connector: cRef as Ref<Connector>
+  })
+  
+  connect()
+  
+cRef.value = connectors_[0]
+setTimeout(() => {
+  connect()
+}, 3000)
 
 </script>
 
