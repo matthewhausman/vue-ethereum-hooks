@@ -5,29 +5,40 @@ import {
   getWebSocketProvider,
   watchWebSocketProvider,
 } from '@vue-ethereum-hooks/core'
-import { onScopeDispose, ref } from 'vue-demi'
-// import { useSyncExternalStoreWithSelector } from 'use-sync-external-store/shim/with-selector.js'
+import { tryOnScopeDispose } from '@vueuse/core'
+import { ref, unref, watchEffect } from 'vue-demi'
 
-export type UseWebSocketProviderArgs = Partial<GetWebSocketProviderArgs>
+import { MaybeRef } from '../../types'
+
+export type UseWebSocketProviderArgs = Partial<{
+  [Property in keyof GetWebSocketProviderArgs]: MaybeRef<
+    GetWebSocketProviderArgs[Property]
+  >
+}>
 
 export function useWebSocketProvider<
   TWebSocketProvider extends WebSocketProvider,
 >({ chainId }: UseWebSocketProviderArgs = {}) {
   const webSocketProvider = ref(
     getWebSocketProvider<TWebSocketProvider>({
-      chainId,
+      chainId: unref<number | undefined>(chainId),
     }) as GetWebSocketProviderResult,
   )
-  const unsubscribe = watchWebSocketProvider<TWebSocketProvider>(
-    { chainId },
-    (w: GetWebSocketProviderResult) => {
-      if (w?.network.chainId === getWebSocketProvider({ chainId })) {
+
+  let unsubscribe: () => void | undefined
+  watchEffect((cleanupFn) => {
+    unsubscribe = watchWebSocketProvider<TWebSocketProvider>(
+      { chainId: unref<number | undefined>(chainId) },
+      (w: GetWebSocketProviderResult) => {
         webSocketProvider.value = w
-      }
-    },
-  )
-  onScopeDispose(() => {
-    unsubscribe()
+      },
+    )
+    cleanupFn(() => {
+      unsubscribe()
+    })
+  })
+  tryOnScopeDispose(() => {
+    unsubscribe && unsubscribe()
   })
 
   return webSocketProvider

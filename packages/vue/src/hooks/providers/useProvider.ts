@@ -4,22 +4,36 @@ import {
   getProvider,
   watchProvider,
 } from '@vue-ethereum-hooks/core'
-import { onScopeDispose, ref } from 'vue-demi'
-// import { useSyncExternalStoreWithSelector } from 'use-sync-external-store/shim/with-selector.js'
+import { tryOnScopeDispose } from '@vueuse/core'
+import { ref, unref, watchEffect } from 'vue-demi'
 
-export type UseProviderArgs = Partial<GetProviderArgs>
+import { MaybeRef } from '../../types'
+
+export type UseProviderArgs = Partial<{
+  [Property in keyof GetProviderArgs]: MaybeRef<GetProviderArgs[Property]>
+}>
 
 export function useProvider<TProvider extends Provider>({
   chainId,
 }: UseProviderArgs = {}) {
-  const provider = ref<TProvider>(getProvider({ chainId }))
-  const unsubscribe = watchProvider({ chainId }, (p: Provider) => {
-    if (getProvider({ chainId }).network.chainId === p.network.chainId) {
-      provider.value = p
-    }
+  const provider = ref<TProvider>(
+    getProvider({ chainId: unref<number | undefined>(chainId) }),
+  )
+  let unsubscribe: () => void | undefined
+  watchEffect((cleanupFn) => {
+    unsubscribe = watchProvider(
+      { chainId: unref<number | undefined>(chainId) },
+      (p: Provider) => {
+        provider.value = p
+      },
+    )
+
+    cleanupFn(() => {
+      unsubscribe()
+    })
   })
-  onScopeDispose(() => {
-    unsubscribe()
+  tryOnScopeDispose(() => {
+    unsubscribe && unsubscribe()
   })
   return provider
 }
