@@ -5,7 +5,8 @@ import {
   watchAccount,
 } from '@vue-ethereum-hooks/core'
 
-import { onScopeDispose, ref, unref, watch } from 'vue-demi'
+import { tryOnScopeDispose } from '@vueuse/core'
+import { ref, unref, watch } from 'vue-demi'
 
 import { MaybeRef } from '../../types'
 
@@ -58,7 +59,7 @@ export function useAccount({ onConnect, onDisconnect }: UseAccountConfig = {}) {
       plainDisconnect()
     previousAccount.current = account.value as GetAccountResult
   })
-  onScopeDispose(() => {
+  tryOnScopeDispose(() => {
     unsubscribeAccount()
   })
   return {

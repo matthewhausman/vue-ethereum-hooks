@@ -25,12 +25,12 @@ export type UseConnectConfig = UseMutationOptions<
 export const mutationKey = (args: Partial<ConnectArgs>) =>
   [{ entity: 'connect', ...args }] as const
 
-const mutationFn = (args: UseConnectArgs) => {
+const mutationFn = (args: ConnectArgs) => {
   const { connector, chainId } = args
   if (!connector) throw new Error('connector is required')
   return connect({
-    connector: unref<Connector>(connector),
-    chainId: unref<number | undefined>(chainId),
+    connector: connector,
+    chainId: chainId,
   })
 }
 

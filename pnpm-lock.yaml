@@ -107,6 +107,7 @@ importers:
       '@vue-ethereum-hooks/core': ^0.0.3
       '@vue/composition-api': 1.7.1
       '@vue/devtools-api': ^6.4.2
+      '@vueuse/core': ^9.4.0
       '@walletconnect/ethereum-provider': ^1.8.0
       abitype: ^0.1.7
       ethers: ^5.7.0
@@ -122,6 +123,7 @@ importers:
       '@tanstack/vue-query': 4.14.1_dyjqe6a6hnb4vyzxfuk6bzpiny
       '@vue-ethereum-hooks/core': link:../core
       '@vue/devtools-api': 6.4.5
+      '@vueuse/core': 9.4.0_dyjqe6a6hnb4vyzxfuk6bzpiny
       '@walletconnect/ethereum-provider': 1.8.0
       abitype: 0.1.7
       eventemitter3: 4.0.7
@@ -2623,6 +2625,10 @@ packages:
     resolution: {integrity: sha512-PBjIUxZHOuj0R15/xuwJYjFi+KZdNFrehocChv4g5hu6aFroHue8m0lBP0POdK2nKzbw0cgV1mws8+V/JAcEkQ==}
     dev: true
 
+  /@types/web-bluetooth/0.0.16:
+    resolution: {integrity: sha512-oh8q2Zc32S6gd/j50GowEjKLoOVOwHP/bWVjKJInBwQqdOYMdPrf1oVlelTlyfFK3CKxL1uahMDAr+vy8T7yMQ==}
+    dev: false
+
   /@types/ws/7.4.7:
     resolution: {integrity: sha512-JQbbmxZTZehdc2iszGKs5oC3NFnjeay7mtAWrdt7qNtAVK0g19muApzAy4bm9byz79xa2ZnO/BOBC2R8RC5Lww==}
     dependencies:
@@ -2861,6 +2867,31 @@ packages:
 
   /@vue/shared/3.2.41:
     resolution: {integrity: sha512-W9mfWLHmJhkfAmV+7gDjcHeAWALQtgGT3JErxULl0oz6R6+3ug91I7IErs93eCFhPCZPHBs4QJS7YWEV7A3sxw==}
+
+  /@vueuse/core/9.4.0_dyjqe6a6hnb4vyzxfuk6bzpiny:
+    resolution: {integrity: sha512-JzgenGj1ZF2BHOen5rsFiAyyI9sXAv7aKhNLlm9b7SwYQeKTcxTWdhudonURCSP3Egl9NQaRBzes2lv/1JUt/Q==}
+    dependencies:
+      '@types/web-bluetooth': 0.0.16
+      '@vueuse/metadata': 9.4.0
+      '@vueuse/shared': 9.4.0_dyjqe6a6hnb4vyzxfuk6bzpiny
+      vue-demi: 0.13.11_dyjqe6a6hnb4vyzxfuk6bzpiny
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+    dev: false
+
+  /@vueuse/metadata/9.4.0:
+    resolution: {integrity: sha512-7GKMdGAsJyQJl35MYOz/RDpP0FxuiZBRDSN79QIPbdqYx4Sd0sVTnIC68KJ6Oln0t0SouvSUMvRHuno216Ud2Q==}
+    dev: false
+
+  /@vueuse/shared/9.4.0_dyjqe6a6hnb4vyzxfuk6bzpiny:
+    resolution: {integrity: sha512-fTuem51KwMCnqUKkI8B57qAIMcFovtGgsCtAeqxIzH3i6nE9VYge+gVfneNHAAy7lj8twbkNfqQSygOPJTm4tQ==}
+    dependencies:
+      vue-demi: 0.13.11_dyjqe6a6hnb4vyzxfuk6bzpiny
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+    dev: false
 
   /@walletconnect/browser-utils/1.8.0:
     resolution: {integrity: sha512-Wcqqx+wjxIo9fv6eBUFHPsW1y/bGWWRboni5dfD8PtOmrihrEpOCmvRJe4rfl7xgJW8Ea9UqKEaq0bIRLHlK4A==}

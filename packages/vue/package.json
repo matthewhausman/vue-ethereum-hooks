@@ -110,7 +110,8 @@
     "@walletconnect/ethereum-provider": "^1.8.0",
     "abitype": "^0.1.7",
     "vue-demi": "^0.13.11",
-    "@vue/devtools-api": "^6.4.2"
+    "@vue/devtools-api": "^6.4.2",
+    "@vueuse/core": "^9.4.0"
   },
   "peerDependencies": {
     "ethers": ">=5.5.1",
