@@ -71,6 +71,7 @@ export function useConnect({
 
   const connect = (args?: Partial<ConnectArgs>) => {
     const plainConnector = isRef(connector) ? connector.value : connector
+    console.log(args)
     if (!plainConnector) return
     return mutate({
       chainId: args?.chainId ?? unref<number | undefined>(chainId),

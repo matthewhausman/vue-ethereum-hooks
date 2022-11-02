@@ -3,7 +3,6 @@ import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 import { useConnect } from '@vue-ethereum-hooks/hooks'
 import { useClient } from '@vue-ethereum-hooks/hooks'
-console.log(useClient())
 const { connect, connectors } = useConnect()
 connect({
   chainId: 1,
