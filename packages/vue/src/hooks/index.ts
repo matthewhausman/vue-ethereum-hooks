@@ -1,7 +1,7 @@
 export {
   useAccount,
-  // useBalance,
-  // useConnect,
+  useBalance,
+  useConnect,
   // useDisconnect,
   // useNetwork,
   // useSigner,
@@ -26,7 +26,7 @@ export {
 
 // export { useBlockNumber, useFeeData } from './network-status'
 
-// export { useProvider, useWebSocketProvider } from './providers'
+export { useProvider, useWebSocketProvider } from './providers'
 
 // export {
 //   useSendTransaction,
@@ -35,11 +35,4 @@ export {
 //   useWaitForTransaction,
 // } from './transactions'
 
-// export {
-//   useChainId,
-//   useBaseQuery,
-//   useQuery,
-//   useInfiniteQuery,
-//   useMutation,
-//   useQueryClient,
-// } from './utils'
+export { useChainId } from './utils'

@@ -5,7 +5,7 @@ export { deserialize, serialize } from './utils'
 
 import type {} from 'eventemitter3'
 
-export {} from './hooks'
+export { useAccount } from './hooks'
 
 export {
   AddChainError,
