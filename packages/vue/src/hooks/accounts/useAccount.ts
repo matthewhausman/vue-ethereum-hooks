@@ -35,6 +35,9 @@ export function useAccount({ onConnect, onDisconnect }: UseAccountConfig = {}) {
   const unsubscribeAccount = watchAccount((acc: GetAccountResult) => {
     account.value = acc
   })
+  tryOnScopeDispose(() => {
+    unsubscribeAccount()
+  })
   watch(
     account,
     () => {
@@ -63,9 +66,6 @@ export function useAccount({ onConnect, onDisconnect }: UseAccountConfig = {}) {
       deep: true,
     },
   )
-  tryOnScopeDispose(() => {
-    unsubscribeAccount()
-  })
   return {
     account,
   }
