@@ -5,10 +5,8 @@ import {
   watchAccount,
 } from '@vue-ethereum-hooks/core'
 
-import { tryOnScopeDispose } from '@vueuse/core'
+import { MaybeRef, tryOnScopeDispose } from '@vueuse/core'
 import { ref, unref, watch } from 'vue-demi'
-
-import { MaybeRef } from '../../types'
 
 export type AccountConfig = {
   /** Function to invoke when connected */

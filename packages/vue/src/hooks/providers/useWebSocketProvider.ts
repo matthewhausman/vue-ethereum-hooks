@@ -5,10 +5,8 @@ import {
   getWebSocketProvider,
   watchWebSocketProvider,
 } from '@vue-ethereum-hooks/core'
-import { tryOnScopeDispose } from '@vueuse/core'
+import { MaybeRef, tryOnScopeDispose } from '@vueuse/core'
 import { ref, unref, watchEffect } from 'vue-demi'
-
-import { MaybeRef } from '../../types'
 
 export type UseWebSocketProviderArgs = Partial<{
   [Property in keyof GetWebSocketProviderArgs]: MaybeRef<

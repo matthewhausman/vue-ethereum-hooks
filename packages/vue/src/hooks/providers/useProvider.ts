@@ -4,10 +4,8 @@ import {
   getProvider,
   watchProvider,
 } from '@vue-ethereum-hooks/core'
-import { tryOnScopeDispose } from '@vueuse/core'
+import { MaybeRef, tryOnScopeDispose } from '@vueuse/core'
 import { ref, unref, watchEffect } from 'vue-demi'
-
-import { MaybeRef } from '../../types'
 
 export type UseProviderArgs = Partial<{
   [Property in keyof GetProviderArgs]: MaybeRef<GetProviderArgs[Property]>

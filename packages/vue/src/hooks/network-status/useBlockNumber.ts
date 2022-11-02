@@ -5,9 +5,10 @@ import {
   fetchBlockNumber,
 } from '@vue-ethereum-hooks/core'
 import { debounce } from '@vue-ethereum-hooks/core/internal'
+import { MaybeRef } from '@vueuse/core'
 import { computed, unref, watchEffect } from 'vue-demi'
 
-import { MaybeRef, QueryConfig, QueryFunctionArgs } from '../../types'
+import { QueryConfig, QueryFunctionArgs } from '../../types'
 import { useProvider, useWebSocketProvider } from '../providers'
 import { useChainId } from '../utils'
 

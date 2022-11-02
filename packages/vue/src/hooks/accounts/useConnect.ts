@@ -5,11 +5,10 @@ import {
   Connector,
   connect,
 } from '@vue-ethereum-hooks/core'
-
+import { MaybeRef } from '@vueuse/core'
 import { computed, isRef, unref } from 'vue-demi'
 
 import { useClient } from '../../client'
-import { MaybeRef } from '../../types'
 
 export type UseConnectArgs = Partial<{
   [Property in keyof ConnectArgs]: MaybeRef<ConnectArgs[Property]>

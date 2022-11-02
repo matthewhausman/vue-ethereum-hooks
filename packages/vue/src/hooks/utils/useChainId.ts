@@ -1,7 +1,9 @@
+import { MaybeRef } from '@vueuse/core'
+
 import { useProvider } from '../providers'
 
 export type UseChainIdArgs = {
-  chainId?: number
+  chainId?: MaybeRef<number>
 }
 
 export function useChainId({ chainId }: UseChainIdArgs = {}) {
