@@ -1,4 +1,5 @@
 import { MaybeRef } from '@vueuse/core'
+import { computed } from 'vue-demi'
 
 import { useProvider } from '../providers'
 
@@ -8,5 +9,8 @@ export type UseChainIdArgs = {
 
 export function useChainId({ chainId }: UseChainIdArgs = {}) {
   const provider = useProvider({ chainId })
-  return provider.value.network.chainId
+  const computedChainId = computed(() => {
+    return provider.value.network.chainId
+  })
+  return computedChainId
 }
