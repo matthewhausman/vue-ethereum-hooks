@@ -13,7 +13,7 @@ export class MockConnector extends Connector<
   readonly name = 'Mock'
   readonly ready = true
 
-  #provider?: MockProvider
+  private provider_?: MockProvider
 
   constructor(config: { chains?: Chain[]; options: MockProviderOptions }) {
     super(config)
@@ -33,7 +33,9 @@ export class MockConnector extends Connector<
     const unsupported = this.isChainUnsupported(id)
     const data = { account, chain: { id, unsupported }, provider }
 
-    if (!this.options.flags?.noSwitchChain) this.switchChain = this.#switchChain
+    if (!this.options.flags?.noSwitchChain) {
+      // TODO: Find another way to do this
+    }
 
     return new Promise<Required<ConnectorData>>((res) =>
       setTimeout(() => res(data), 100),
@@ -64,9 +66,9 @@ export class MockConnector extends Connector<
   }
 
   async getProvider({ chainId }: { chainId?: number } = {}) {
-    if (!this.#provider || chainId)
-      this.#provider = new MockProvider({ ...this.options, chainId })
-    return this.#provider
+    if (!this.provider_ || chainId)
+      this.provider_ = new MockProvider({ ...this.options, chainId })
+    return this.provider_
   }
 
   async getSigner() {
@@ -84,7 +86,7 @@ export class MockConnector extends Connector<
     }
   }
 
-  async #switchChain(chainId: number) {
+  protected async switchChain(chainId: number) {
     const provider = await this.getProvider()
     await provider.switchChain(chainId)
     return (

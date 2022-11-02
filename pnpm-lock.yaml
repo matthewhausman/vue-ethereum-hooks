@@ -85,7 +85,7 @@ importers:
       '@rushstack/eslint-patch': ^1.1.4
       '@types/node': ^16.11.68
       '@vitejs/plugin-vue': ^3.1.2
-      '@vue-ethereum-hooks/hooks': ^0.0.20
+      '@vue-ethereum-hooks/hooks': ^0.0.21
       '@vue/eslint-config-typescript': ^11.0.0
       '@vue/tsconfig': ^0.1.3
       eslint: ^8.22.0
@@ -139,6 +139,7 @@ importers:
       '@tanstack/query-persist-client-core': ^4.13.0
       '@tanstack/query-sync-storage-persister': ^4.13.0
       '@tanstack/vue-query': ^4.13.2
+      '@types/lodash': ^4.14.187
       '@vue-ethereum-hooks/core': ^0.0.4
       '@vue/composition-api': 1.7.1
       '@vue/devtools-api': ^6.4.2
@@ -147,6 +148,7 @@ importers:
       abitype: ^0.1.7
       ethers: ^5.7.0
       eventemitter3: ^4.0.7
+      lodash: ^4.17.21
       vue: ^3.2.40
       vue-demi: ^0.13.11
       vue2: npm:vue@2
@@ -156,12 +158,14 @@ importers:
       '@tanstack/query-persist-client-core': 4.14.1_i53teysoh6fc7r2623qjweje54
       '@tanstack/query-sync-storage-persister': 4.14.1_i53teysoh6fc7r2623qjweje54
       '@tanstack/vue-query': 4.14.1_dyjqe6a6hnb4vyzxfuk6bzpiny
+      '@types/lodash': 4.14.187
       '@vue-ethereum-hooks/core': link:../core
       '@vue/devtools-api': 6.4.5
       '@vueuse/core': 9.4.0_dyjqe6a6hnb4vyzxfuk6bzpiny
       '@walletconnect/ethereum-provider': 1.8.0
       abitype: 0.1.7
       eventemitter3: 4.0.7
+      lodash: 4.17.21
       vue-demi: 0.13.11_dyjqe6a6hnb4vyzxfuk6bzpiny
     devDependencies:
       '@vue/composition-api': 1.7.1_vue@3.2.41
@@ -2648,6 +2652,10 @@ packages:
   /@types/json5/0.0.29:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
     dev: true
+
+  /@types/lodash/4.14.187:
+    resolution: {integrity: sha512-MrO/xLXCaUgZy3y96C/iOsaIqZSeupyTImKClHunL5GrmaiII2VwvWmLBu2hwa0Kp0sV19CsyjtrTc/Fx8rg/A==}
+    dev: false
 
   /@types/mdast/3.0.10:
     resolution: {integrity: sha512-W864tg/Osz1+9f4lrGTZpCSO5/z4608eUp19tbozkq2HJK6i3z1kT0H9tlADXuYIb1YYOBByU4Jsqkk75q48qA==}

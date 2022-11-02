@@ -55,7 +55,7 @@ export abstract class Connector<
   abstract getProvider(config?: { chainId?: number }): Promise<Provider>
   abstract getSigner(config?: { chainId?: number }): Promise<Signer>
   abstract isAuthorized(): Promise<boolean>
-  switchChain?(chainId: number): Promise<Chain>
+  protected abstract switchChain?(chainId: number): Promise<Chain>
   watchAsset?(asset: {
     address: string
     decimals?: number

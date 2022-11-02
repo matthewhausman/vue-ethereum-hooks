@@ -264,6 +264,7 @@ export class Client<
     const { provider } = this.config
     provider_ =
       typeof provider === 'function' ? provider({ chainId }) : provider
+
     this.providers.set(chainId ?? -1, provider_)
 
     return provider_

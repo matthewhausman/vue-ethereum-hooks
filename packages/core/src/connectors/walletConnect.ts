@@ -35,7 +35,7 @@ export class WalletConnectConnector extends Connector<
   readonly name = 'WalletConnect'
   readonly ready = true
 
-  #provider?: WalletConnectProvider
+  private provider_?: WalletConnectProvider
 
   constructor(config: { chains?: Chain[]; options: WalletConnectOptions }) {
     super(config)
@@ -69,8 +69,9 @@ export class WalletConnectConnector extends Connector<
       // Not all WalletConnect options support programmatic chain switching
       // Only enable for wallet options that do
       const walletName = provider.connector?.peerMeta?.name ?? ''
-      if (switchChainAllowedRegex.test(walletName))
-        this.switchChain = this.#switchChain
+      if (switchChainAllowedRegex.test(walletName)) {
+        // TODO: find another way to do this
+      }
 
       return {
         account,
@@ -116,7 +117,7 @@ export class WalletConnectConnector extends Connector<
     create,
   }: { chainId?: number; create?: boolean } = {}) {
     // Force create new provider
-    if (!this.#provider || chainId || create) {
+    if (!this.provider_ || chainId || create) {
       const rpc = !this.options?.infuraId
         ? this.chains.reduce(
             (rpc, chain) => ({ ...rpc, [chain.id]: chain.rpcUrls.default }),
@@ -127,14 +128,14 @@ export class WalletConnectConnector extends Connector<
       const WalletConnectProvider = (
         await import('@walletconnect/ethereum-provider')
       ).default
-      this.#provider = new WalletConnectProvider({
+      this.provider_ = new WalletConnectProvider({
         ...this.options,
         chainId,
         rpc: { ...rpc, ...this.options?.rpc },
       })
     }
 
-    return this.#provider
+    return this.provider_
   }
 
   async getSigner({ chainId }: { chainId?: number } = {}) {
@@ -157,7 +158,7 @@ export class WalletConnectConnector extends Connector<
     }
   }
 
-  async #switchChain(chainId: number) {
+  protected async switchChain(chainId: number) {
     const provider = await this.getProvider()
     const id = hexValue(chainId)
 
