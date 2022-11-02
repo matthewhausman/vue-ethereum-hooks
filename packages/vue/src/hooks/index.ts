@@ -1,6 +1,5 @@
 export {
   useAccount,
-  useBalance,
   useConnect,
   // useDisconnect,
   // useNetwork,
