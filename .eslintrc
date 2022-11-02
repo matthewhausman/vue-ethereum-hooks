@@ -73,6 +73,7 @@
     }
   ],
   "ignorePatterns": [
+    "examples/vue-example",
     "CHANGELOG.md",
     "build",
     "dist",

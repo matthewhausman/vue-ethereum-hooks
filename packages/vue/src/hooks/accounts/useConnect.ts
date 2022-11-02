@@ -26,6 +26,7 @@ export const mutationKey = (args: Partial<ConnectArgs>) =>
 
 const mutationFn = (args: ConnectArgs) => {
   const { connector, chainId } = args
+  console.log(args)
   if (!connector) throw new Error('connector is required')
   return connect({
     connector: connector,

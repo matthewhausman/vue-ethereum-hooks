@@ -1,6 +1,7 @@
 node_modules
 dist
 generated
+examples
 CHANGELOG.md
 
 // Once prettier fixes MDX ignore ranges
