@@ -11,7 +11,7 @@
   "author": "awkweb.eth",
   "main": "dist/vue-ethereum-hooks-hooks.cjs.js",
   "module": "dist/vue-ethereum-hooks-hooks.esm.js",
-  "types": "dist/vue-ethereum-hooks-hooks.esm.js",
+  "types": "dist/vue-ethereum-hooks-hooks.cjs.d.ts",
   "exports": {
     ".": {
       "module": "./dist/vue-ethereum-hooks-hooks.esm.js",
