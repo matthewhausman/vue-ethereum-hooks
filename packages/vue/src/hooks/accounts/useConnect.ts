@@ -68,23 +68,23 @@ export function useConnect({
     onSuccess,
   })
 
-  const connect = computed(() => (args?: Partial<ConnectArgs>) => {
+  const connect = (args?: Partial<ConnectArgs>) => {
     const plainConnector = isRef(connector) ? connector.value : connector
     if (!plainConnector) return
     return mutate({
       chainId: args?.chainId ?? unref<number | undefined>(chainId),
       connector: args?.connector ?? plainConnector,
     })
-  })
+  }
 
-  const connectAsync = computed(() => (args?: Partial<ConnectArgs>) => {
+  const connectAsync = (args?: Partial<ConnectArgs>) => {
     const plainConnector = isRef(connector) ? connector.value : connector
     if (!plainConnector) return
     return mutateAsync({
       chainId: args?.chainId ?? unref<number | undefined>(chainId),
       connector: args?.connector ?? plainConnector,
     })
-  })
+  }
 
   return {
     connect,
