@@ -1,12 +1,11 @@
 import {
   GetWebSocketProviderArgs,
-  GetWebSocketProviderResult,
   WebSocketProvider,
   getWebSocketProvider,
   watchWebSocketProvider,
 } from '@vue-ethereum-hooks/core'
-import { MaybeRef, tryOnScopeDispose } from '@vueuse/core'
-import { ref, unref, watchEffect } from 'vue-demi'
+import { MaybeRef } from '@vueuse/core'
+import { shallowRef, triggerRef, unref } from 'vue-demi'
 
 export type ReactiveGetWebSocketProviderArgs = {
   [Property in keyof GetWebSocketProviderArgs]: MaybeRef<
@@ -19,27 +18,17 @@ export type UseWebSocketProviderArgs = Partial<ReactiveGetWebSocketProviderArgs>
 export function useWebSocketProvider<
   TWebSocketProvider extends WebSocketProvider,
 >({ chainId }: UseWebSocketProviderArgs = {}) {
-  const webSocketProvider = ref(
+  const webSocketProvider = shallowRef(
     getWebSocketProvider<TWebSocketProvider>({
       chainId: unref<number | undefined>(chainId),
-    }) as GetWebSocketProviderResult,
+    }),
   )
-
-  let unsubscribe: () => void | undefined
-  watchEffect((cleanupFn) => {
-    unsubscribe = watchWebSocketProvider<TWebSocketProvider>(
-      { chainId: unref<number | undefined>(chainId) },
-      (w: GetWebSocketProviderResult) => {
-        webSocketProvider.value = w
-      },
-    )
-    cleanupFn(() => {
-      unsubscribe()
-    })
-  })
-  tryOnScopeDispose(() => {
-    unsubscribe && unsubscribe()
-  })
-
+  watchWebSocketProvider<TWebSocketProvider>(
+    { chainId: unref(chainId) },
+    (v) => {
+      webSocketProvider.value = v
+      triggerRef(webSocketProvider)
+    },
+  )
   return webSocketProvider
 }

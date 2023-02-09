@@ -1,7 +1,7 @@
 import type { GetProviderArgs, Provider } from '@vue-ethereum-hooks/core'
 import { getProvider, watchProvider } from '@vue-ethereum-hooks/core'
 import { MaybeRef } from '@vueuse/core'
-import { shallowRef, unref } from 'vue-demi'
+import { shallowRef, triggerRef, unref } from 'vue-demi'
 
 export type ReactiveGetProviderArgs = {
   [Property in keyof GetProviderArgs]: MaybeRef<GetProviderArgs[Property]>
@@ -20,6 +20,7 @@ export function useProvider<TProvider extends Provider>({
 
   watchProvider<TProvider>({ chainId: unref(chainId) }, (v) => {
     provider.value = v
+    triggerRef(provider)
   })
 
   return provider
