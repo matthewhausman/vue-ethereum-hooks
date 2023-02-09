@@ -11,6 +11,7 @@ import { InjectedConnector } from '@vue-ethereum-hooks/hooks/connectors/injected
 import { MetaMaskConnector } from '@vue-ethereum-hooks/hooks/connectors/metaMask'
 import { WalletConnectConnector } from '@vue-ethereum-hooks/hooks/connectors/walletConnect'
 import { publicProvider } from '@vue-ethereum-hooks/hooks/providers/public'
+import { alchemyProvider } from '@vue-ethereum-hooks/hooks/providers/alchemy'
 
 
 const app = createApp(App)
@@ -19,7 +20,7 @@ app.use(router)
 
 
 const { chains, provider, webSocketProvider } = configureChains(defaultChains, [
-  publicProvider(),
+  alchemyProvider(),
 ])
 
 wagmiVue.install(app, {

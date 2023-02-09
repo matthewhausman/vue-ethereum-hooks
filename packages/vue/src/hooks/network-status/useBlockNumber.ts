@@ -40,7 +40,9 @@ export function useBlockNumber({
   onSettled,
   onSuccess,
 }: UseBlockNumberArgs & UseBlockNumberConfig = {}) {
+  console.log(chainId_)
   const chainId = useChainId({ chainId: chainId_ })
+  console.log(chainId)
   const provider = useProvider({ chainId })
   const webSocketProvider = useWebSocketProvider({ chainId })
   // console.log(provider.value.on())
@@ -53,11 +55,12 @@ export function useBlockNumber({
     return d
   }
 
-  const provider_ = webSocketProvider ?? provider
-  console.log(provider)
-  provider_.value?.on('block', () => {
+  const provider_ = webSocketProvider.value ?? provider.value
+  provider_?.on('block', (blockNumber: number) => {
+    console.log(blockNumber)
     console.log('blocked up')
   })
+  console.log(provider_.listeners('block'))
 
   return useQuery(queryKey, queryFn, {
     cacheTime,

@@ -1,14 +1,22 @@
 <script setup lang="ts">
 import { useConnect } from '@vue-ethereum-hooks/hooks';
-import { useBlockNumber } from '@vue-ethereum-hooks/hooks';
+import { useBlockNumber, useProvider } from '@vue-ethereum-hooks/hooks';
 import { watch } from 'vue'
 const { connect, connectors, error, isLoading, pendingConnector } =
     useConnect()
 
 const b = useBlockNumber({
-  watch: true
+  watch: true,
+  chainId: 1
+})
+const provider = useProvider({chainId: 1})
+provider.value.on('block', (v) => {
+  console.log(v)
 })
 
+provider.value.on("error", (tx) => {
+  console.log(tx)
+});
 </script>
 
 <template>
