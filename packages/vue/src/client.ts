@@ -15,7 +15,7 @@ import {
   WebSocketProvider,
   createClient as createCoreClient,
 } from '@vue-ethereum-hooks/core'
-import { App, ComputedRef, computed, ref } from 'vue-demi'
+import { App } from 'vue-demi'
 
 import { deserialize, serialize } from './utils'
 
@@ -92,13 +92,13 @@ export type Client<
   TWebSocketProvider extends WebSocketProvider = WebSocketProvider,
 > = CoreClient<TProvider, TWebSocketProvider> & { queryClient: QueryClient }
 
-const client = ref<Client | undefined>()
+let client: Client | undefined = undefined
 
 export const initClient = (c: Client, app: App<any>) => {
-  client.value = c
+  client = c
   app.config.globalProperties.wagmiClient = client
 }
 
 export const useClient = () => {
-  return computed(() => client.value) as ComputedRef<Client>
+  return client as Client
 }

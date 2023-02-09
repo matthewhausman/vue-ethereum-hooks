@@ -2,48 +2,24 @@
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 import { useConnect } from '@vue-ethereum-hooks/hooks'
-import { useClient, Connector, useBlockNumber } from '@vue-ethereum-hooks/hooks'
-import { ref, watch } from 'vue';
+import { useClient, Connector, useBlockNumber, useProvider, useChainId } from '@vue-ethereum-hooks/hooks'
+import { ref, shallowRef, watch } from 'vue';
 import type { Ref } from 'vue'
 
-// const connectors_ = useClient().value.connectors
-// const c = connectors_[0]
-// const cRef = ref(c)
-
-// const { connect, connectors } = useConnect({
-//   chainId: 1,
-//   connector: cRef as Ref<Connector>
-// })
-
-// connect()
-
-const { data } = useBlockNumber({
-  chainId: 1,
-  watch: true
+const provider = useProvider({
+  chainId: 1
 })
 
-watch(data, () => {
-  console.log(data.value)
-}, {
-  deep: true
-})
+const chainId = useChainId()
+
+const { connect, connectors, error, isLoading, pendingConnector } =
+    useConnect()
+// const providerCopy = ref(provider)
+// console.log(providerCopy.value._network)
 
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
   <RouterView />
 </template>
 
